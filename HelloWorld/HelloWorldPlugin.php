@@ -37,15 +37,13 @@ public function hookInstall() {
         INDEX (`item_id`)) ENGINE = InnoDB";
         $db->query($sql);
         
-          $sql = "
+            $sql = "
         CREATE TABLE IF NOT EXISTS `$db->Howdy` (
         `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `item_id` BIGINT UNSIGNED NOT NULL,
-        `req_id`  BIGINT UNSIGNED NOT NULL,
+        `req_id`  BIGINT UNSIGNED NOT NULL REFERENCES omeka_hellos(id),
         `howdy` TINYINT(1) NULL,
         INDEX (`item_id`)) ENGINE = InnoDB";
-        //FOREIGN KEY (`id_hello`)
-        //REFERENCES `$db->Hello->getColumns`) ENGINE = InnoDB";
         $db->query($sql);
 }
 public function hookUninstall(){
